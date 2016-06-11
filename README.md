@@ -1,2 +1,2 @@
-# gnomo
-Gnome C++ Development Library
+# fenetra
+Windows C++ Development Library
