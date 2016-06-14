@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "app", "app", "{08CB84D3-467E-4C59-8AB7-7C72579D239D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{D1421429-542F-4022-93D9-662B1FA50133}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Property Sheets", "Property Sheets", "{D0A14334-A708-484B-BF1C-82024FD480A9}"
+	ProjectSection(SolutionItems) = preProject
+		fenetra-vcversion.vsprops = fenetra-vcversion.vsprops
+		..\fenetra.vsprops = ..\fenetra.vsprops
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libfenetra", "libfenetra\libfenetra.vcproj", "{3C8E5805-B046-49B6-A2A9-05C73697EB30}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WinFHello", "WinFHello\WinFHello.vcproj", "{3132233C-1DB2-4646-89A9-197BAD9A036C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3C8E5805-B046-49B6-A2A9-05C73697EB30} = {3C8E5805-B046-49B6-A2A9-05C73697EB30}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3C8E5805-B046-49B6-A2A9-05C73697EB30}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3C8E5805-B046-49B6-A2A9-05C73697EB30}.Debug|Win32.Build.0 = Debug|Win32
+		{3C8E5805-B046-49B6-A2A9-05C73697EB30}.Debug|x64.ActiveCfg = Debug|x64
+		{3C8E5805-B046-49B6-A2A9-05C73697EB30}.Debug|x64.Build.0 = Debug|x64
+		{3C8E5805-B046-49B6-A2A9-05C73697EB30}.Release|Win32.ActiveCfg = Release|Win32
+		{3C8E5805-B046-49B6-A2A9-05C73697EB30}.Release|Win32.Build.0 = Release|Win32
+		{3C8E5805-B046-49B6-A2A9-05C73697EB30}.Release|x64.ActiveCfg = Release|x64
+		{3C8E5805-B046-49B6-A2A9-05C73697EB30}.Release|x64.Build.0 = Release|x64
+		{3132233C-1DB2-4646-89A9-197BAD9A036C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3132233C-1DB2-4646-89A9-197BAD9A036C}.Debug|Win32.Build.0 = Debug|Win32
+		{3132233C-1DB2-4646-89A9-197BAD9A036C}.Debug|x64.ActiveCfg = Debug|x64
+		{3132233C-1DB2-4646-89A9-197BAD9A036C}.Release|Win32.ActiveCfg = Release|Win32
+		{3132233C-1DB2-4646-89A9-197BAD9A036C}.Release|Win32.Build.0 = Release|Win32
+		{3132233C-1DB2-4646-89A9-197BAD9A036C}.Release|x64.ActiveCfg = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3132233C-1DB2-4646-89A9-197BAD9A036C} = {08CB84D3-467E-4C59-8AB7-7C72579D239D}
+		{3C8E5805-B046-49B6-A2A9-05C73697EB30} = {D1421429-542F-4022-93D9-662B1FA50133}
+	EndGlobalSection
+EndGlobal
