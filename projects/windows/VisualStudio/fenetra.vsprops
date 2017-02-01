@@ -27,18 +27,6 @@
     <!--===============================================-->
 
     <UserMacro
-        Name="SOURCE_ROOT_DIR"
-        Value="../../../../../.."
-    />
-
-    <UserMacro
-        Name="SOURCE_BUILD_DIR"
-        Value="$(SOURCE_ROOT_DIR)"
-    />
-
-    <!--===============================================-->
-
-    <UserMacro
         Name="NADIR_GROUP"
         Value=""
     />
@@ -88,9 +76,14 @@
     <!--===============================================-->
 
     <UserMacro
-        Name="NADIR_DEFINES"
-        Value="WINSOCK_2"
+      Name="XOSNADIR_DEFINES"
+      Value="WINSOCK_2"
     />
+    <UserMacro
+        Name="NADIR_DEFINES"
+        Value="USE_NADIR_BASE;$(XOSNADIR_DEFINES)"
+    />
+
     <UserMacro
         Name="NADIR_INCLUDE_DIRS"
         Value="$(NADIR_SOURCE_DIR);$(NADIR_SOURCE_DIR)/platform/windows/unix;$(NADIR_SOURCE_DIR)/thirdparty/gnu/getopt"
@@ -98,6 +91,11 @@
     <UserMacro
         Name="NADIR_LIB_DIRS"
         Value="$(NADIR_LIB)"
+    />
+
+    <UserMacro
+        Name="XOSNADIR_LIBS"
+        Value="libxosnadir.lib Ws2_32.lib"
     />
     <UserMacro
         Name="NADIR_LIBS"
@@ -155,16 +153,26 @@
   <!--===============================================-->
 
     <UserMacro
+      Name="XOSFENETRA_DEFINES"
+      Value="$(XOSNADIR_DEFINES)"
+    />
+    <UserMacro
         Name="FENETRA_DEFINES"
         Value="$(NADIR_DEFINES)"
     />
-    <UserMacro
+
+   <UserMacro
         Name="FENETRA_INCLUDE_DIRS"
         Value="$(FENETRA_SOURCE_DIR);$(NADIR_INCLUDE_DIRS)"
     />
     <UserMacro
         Name="FENETRA_LIB_DIRS"
         Value="$(FENETRA_LIB);$(NADIR_LIB)"
+    />
+
+    <UserMacro
+        Name="XOSFENETRA_LIBS"
+        Value="libxosfenetra.lib $(XOSNADIR_LIBS)"
     />
     <UserMacro
         Name="FENETRA_LIBS"

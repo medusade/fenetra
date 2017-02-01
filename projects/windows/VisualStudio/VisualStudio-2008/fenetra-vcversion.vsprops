@@ -24,7 +24,19 @@
     Version="8.00"
     Name="fenetra-vcversion">
 
-    <!--===============================================-->
+  <!--===============================================-->
+
+    <UserMacro
+      Name="SOURCE_ROOT_DIR"
+      Value="../../../../../.."
+    />
+
+    <UserMacro
+      Name="SOURCE_BUILD_DIR"
+      Value="$(SOURCE_ROOT_DIR)"
+    />
+
+  <!--===============================================-->
 
     <UserMacro
         Name="VCVersion"

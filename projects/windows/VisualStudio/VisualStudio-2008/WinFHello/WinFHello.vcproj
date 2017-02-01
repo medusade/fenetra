@@ -46,7 +46,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="$(FENETRA_INCLUDE_DIRS)"
-				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;$(XOSFENETRA_DEFINES)"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="1"
@@ -65,7 +65,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(FENETRA_LIBS)"
+				AdditionalDependencies="$(XOSFENETRA_LIBS)"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="$(FENETRA_LIB_DIRS)"
 				GenerateDebugInformation="true"
@@ -122,7 +122,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="$(FENETRA_INCLUDE_DIRS)"
-				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;$(XOSFENETRA_DEFINES)"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="1"
@@ -141,7 +141,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(FENETRA_LIBS)"
+				AdditionalDependencies="$(XOSFENETRA_LIBS)"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="$(FENETRA_LIB_DIRS)"
 				GenerateDebugInformation="true"
@@ -199,7 +199,7 @@
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
 				AdditionalIncludeDirectories="$(FENETRA_INCLUDE_DIRS)"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;$(XOSFENETRA_DEFINES)"
 				RuntimeLibrary="0"
 				EnableFunctionLevelLinking="true"
 				UsePrecompiledHeader="0"
@@ -217,7 +217,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(FENETRA_LIBS)"
+				AdditionalDependencies="$(XOSFENETRA_LIBS)"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="$(FENETRA_LIB_DIRS)"
 				GenerateDebugInformation="true"
@@ -278,7 +278,7 @@
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
 				AdditionalIncludeDirectories="$(FENETRA_INCLUDE_DIRS)"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;$(XOSFENETRA_DEFINES)"
 				RuntimeLibrary="0"
 				EnableFunctionLevelLinking="true"
 				UsePrecompiledHeader="0"
@@ -296,7 +296,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(FENETRA_LIBS)"
+				AdditionalDependencies="$(XOSFENETRA_LIBS)"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="$(FENETRA_LIB_DIRS)"
 				GenerateDebugInformation="true"
@@ -337,11 +337,11 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath="..\..\..\..\..\src\fenetra\windows\atom.cpp"
+				RelativePath="..\..\..\..\..\src\fenetra\gui\windows\atom.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\..\..\src\fenetra\windows\hwnd.cpp"
+				RelativePath="..\..\..\..\..\src\fenetra\gui\windows\hwnd.cpp"
 				>
 			</File>
 			<File
@@ -349,31 +349,31 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\..\..\src\fenetra\app\windows\hello\main.cpp"
+				RelativePath="..\..\..\..\..\src\fenetra\app\gui\windows\hello\main.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\..\..\src\fenetra\windows\main_window.cpp"
+				RelativePath="..\..\..\..\..\src\fenetra\gui\windows\main_window.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\..\..\src\fenetra\windows\message_target.cpp"
+				RelativePath="..\..\..\..\..\src\fenetra\gui\windows\message_target.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\..\..\src\fenetra\windows\window.cpp"
+				RelativePath="..\..\..\..\..\src\fenetra\gui\windows\window.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\..\..\src\fenetra\windows\window_class.cpp"
+				RelativePath="..\..\..\..\..\src\fenetra\gui\windows\window_class.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\..\..\src\fenetra\windows\window_main.cpp"
+				RelativePath="..\..\..\..\..\src\fenetra\gui\windows\window_main.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\..\..\src\fenetra\windows\WinMain.cpp"
+				RelativePath="..\..\..\..\..\src\fenetra\gui\windows\WinMain.cpp"
 				>
 			</File>
 		</Filter>
@@ -383,11 +383,11 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath="..\..\..\..\..\src\fenetra\windows\atom.hpp"
+				RelativePath="..\..\..\..\..\src\fenetra\gui\windows\atom.hpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\..\..\src\fenetra\windows\hwnd.hpp"
+				RelativePath="..\..\..\..\..\src\fenetra\gui\windows\hwnd.hpp"
 				>
 			</File>
 			<File
@@ -395,31 +395,31 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\..\..\src\fenetra\app\windows\hello\main.hpp"
+				RelativePath="..\..\..\..\..\src\fenetra\app\gui\windows\hello\main.hpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\..\..\src\fenetra\windows\main_window.hpp"
+				RelativePath="..\..\..\..\..\src\fenetra\gui\windows\main_window.hpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\..\..\src\fenetra\windows\message_target.hpp"
+				RelativePath="..\..\..\..\..\src\fenetra\gui\windows\message_target.hpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\..\..\src\fenetra\windows\window.hpp"
+				RelativePath="..\..\..\..\..\src\fenetra\gui\windows\window.hpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\..\..\src\fenetra\windows\window_class.hpp"
+				RelativePath="..\..\..\..\..\src\fenetra\gui\windows\window_class.hpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\..\..\src\fenetra\windows\window_main.hpp"
+				RelativePath="..\..\..\..\..\src\fenetra\gui\windows\window_main.hpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\..\..\src\fenetra\windows\WinMain.hpp"
+				RelativePath="..\..\..\..\..\src\fenetra\gui\windows\WinMain.hpp"
 				>
 			</File>
 		</Filter>
