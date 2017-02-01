@@ -13,20 +13,19 @@
 /// or otherwise) arising in any way out of the use of this software, 
 /// even if advised of the possibility of such damage.
 ///
-///   File: WinMain.hpp
+///   File: WindowMain.cpp
 ///
 /// Author: $author$
-///   Date: 1/29/2017
+///   Date: 1/31/2017
 ///////////////////////////////////////////////////////////////////////
-#ifndef _FENETRA_WINDOWS_WINMAIN_HPP
-#define _FENETRA_WINDOWS_WINMAIN_HPP
-
-#include "fenetra/windows/Main.hpp"
+#include "fenetra/windows/WindowMain.hpp"
 
 namespace fenetra {
 namespace windows {
 
+///////////////////////////////////////////////////////////////////////
+///  Class: WindowMainT
+///////////////////////////////////////////////////////////////////////
+
 } // namespace windows 
 } // namespace fenetra 
-
-#endif // _FENETRA_WINDOWS_WINMAIN_HPP 

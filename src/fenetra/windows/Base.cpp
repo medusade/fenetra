@@ -13,20 +13,15 @@
 /// or otherwise) arising in any way out of the use of this software, 
 /// even if advised of the possibility of such damage.
 ///
-///   File: WinMain.hpp
+///   File: Base.cpp
 ///
 /// Author: $author$
 ///   Date: 1/29/2017
 ///////////////////////////////////////////////////////////////////////
-#ifndef _FENETRA_WINDOWS_WINMAIN_HPP
-#define _FENETRA_WINDOWS_WINMAIN_HPP
-
-#include "fenetra/windows/Main.hpp"
+#include "fenetra/windows/Base.hpp"
 
 namespace fenetra {
 namespace windows {
 
 } // namespace windows 
 } // namespace fenetra 
-
-#endif // _FENETRA_WINDOWS_WINMAIN_HPP 

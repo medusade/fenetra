@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2016 $organization$
+/// Copyright (c) 1988-2017 $organization$
 ///
 /// This software is provided by the author and contributors ``as is'' 
 /// and any express or implied warranties, including, but not limited to, 
@@ -16,13 +16,13 @@
 ///   File: WinMain.cpp
 ///
 /// Author: $author$
-///   Date: 6/13/2016
+///   Date: 1/29/2017
 ///////////////////////////////////////////////////////////////////////
 #include "fenetra/windows/WinMain.hpp"
-#include "fenetra/windows/main.cpp"
 
 namespace fenetra {
 namespace windows {
+
 } // namespace windows 
 } // namespace fenetra 
 
@@ -31,7 +31,8 @@ namespace windows {
 ///////////////////////////////////////////////////////////////////////
 int WINAPI WinMain
 (HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR cmdLine, int cmdShow) {
-    int err = fenetra::windows::main::the_WinMain
+    int err = fenetra::windows::Main::WinMain
     (hInstance, hPrevInstance, cmdLine, cmdShow);
     return err;
 }
+

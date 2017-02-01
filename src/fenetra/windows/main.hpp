@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2016 $organization$
+/// Copyright (c) 1988-2017 $organization$
 ///
 /// This software is provided by the author and contributors ``as is'' 
 /// and any express or implied warranties, including, but not limited to, 
@@ -13,200 +13,120 @@
 /// or otherwise) arising in any way out of the use of this software, 
 /// even if advised of the possibility of such damage.
 ///
-///   File: main.hpp
+///   File: Main.hpp
 ///
 /// Author: $author$
-///   Date: 6/12/2016
+///   Date: 1/30/2017
 ///////////////////////////////////////////////////////////////////////
 #ifndef _FENETRA_WINDOWS_MAIN_HPP
 #define _FENETRA_WINDOWS_MAIN_HPP
 
-#include "fenetra/base/base.hpp"
+#include "fenetra/windows/Base.hpp"
 
 namespace fenetra {
 namespace windows {
 
-typedef xos::mt::locker main_locker;
-typedef main_locker* main_attached_t;
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+enum SingletonStatus {
+	SingletonSuccess,
+	SingletonDuplicated,
+	SingletonMissing,
+	SingletonInvalid
+};
 
-typedef main_locker main_implements;
-typedef xos::base::attachert<main_attached_t, int, 0, main_implements> main_attacher;
-typedef xos::base::attachedt<main_attached_t, int, 0, main_attacher, base> main_extends;
+typedef ImplementBase MainTImplements;
+typedef Base MainTExtends;
 ///////////////////////////////////////////////////////////////////////
-///  Class: maint
+/// Class: MainT
 ///////////////////////////////////////////////////////////////////////
-template
-<class TImplements = main_implements, class TExtends = main_extends>
-class _EXPORT_CLASS maint: virtual public TImplements, public TExtends {
+template <class TImplements = MainTImplements, class TExtends = MainTExtends>
+class _EXPORT_CLASS SingletonExceptionT: virtual public TImplements, public TExtends {
 public:
     typedef TImplements Implements;
     typedef TExtends Extends;
-
-    ///////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////
-    maint(): the_main_(the_main()) {
-        the_main() = this;
+	///////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////
+	SingletonExceptionT(SingletonStatus status): m_status(status) {
     }
-    virtual ~maint() {
-        if ((this == the_main())) {
-            the_main() = the_main_;
-        }
+    virtual ~SingletonExceptionT() {
     }
+	virtual SingletonStatus Status() const { return m_status; }
+	///////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////
+protected:
+	SingletonStatus m_status;
+};
+typedef SingletonExceptionT<> SingletonException;
 
-    ///////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////
-    static int the_WinMain
-    (HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR cmdLine, int cmdShow);
+///////////////////////////////////////////////////////////////////////
+///  Class: MainT
+///////////////////////////////////////////////////////////////////////
+template <class TImplements =ImplementBase, class TExtends = Base>
+class _EXPORT_CLASS MainT: virtual public TImplements, public TExtends {
+public:
+    typedef TImplements Implements;
+    typedef TExtends Extends;
+	///////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////
+    MainT() {
+		MainT*& theMain = TheMain();
+		if (!(theMain)) {
+			theMain = this;
+		} else {
+			SingletonException e(SingletonDuplicated);
+			LOG_ERROR("...throw SingletonException e(SingletonDuplicated)...");
+			throw (e);
+		}
+    }
+    virtual ~MainT() {
+		MainT* theMain = TheMain();
+		if ((theMain)) {
+			if ((theMain == this)) {
+				theMain = 0;
+			} else {
+				SingletonException e(SingletonInvalid);
+				LOG_ERROR("...throw SingletonException e(SingletonInvalid)...");
+				throw (e);
+			}
+		} else {
+			SingletonException e(SingletonMissing);
+			LOG_ERROR("...throw SingletonException e(SingletonMissing)...");
+			throw (e);
+		}
+    }
 
 protected:
-    ///////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////
-    virtual int WinMain
-    (HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR cmdLine, int cmdShow) {
-        int err = 0;
-        if (!(err = before_WinMainLoop
-            (hInstance, hPrevInstance, cmdLine, cmdShow))) {
-            int err2  = 0;
-
-            err = WinMainLoop
-            (hInstance, hPrevInstance, cmdLine, cmdShow);
-
-            if ((err2 = after_WinMainLoop
-               (hInstance, hPrevInstance, cmdLine, cmdShow))) {
-                if (!(err)) err = err2;
-            }
-        }
-        return err;
-    }
-    virtual int before_WinMain
-    (HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR cmdLine, int cmdShow) {
-        int err = 0;
-        return err;
-    }
-    virtual int after_WinMain
-    (HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR cmdLine, int cmdShow) {
-        int err = 0;
-        return err;
-    }
-
-    ///////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////
-    virtual int WinMainLoop
-    (HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR cmdLine, int cmdShow) {
-        int err = 0;
-        MSG msg;
-        while ((this->GetMessage(&msg, NULL, 0,0))) {
-            this->TranslateMessage(&msg);
-            this->DispatchMessage(&msg);
-        }
-        return err;
-    }
-    virtual int before_WinMainLoop
-    (HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR cmdLine, int cmdShow) {
-        int err = 0;
-        return err;
-    }
-    virtual int after_WinMainLoop
-    (HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR cmdLine, int cmdShow) {
-        int err = 0;
-        return err;
-    }
-
-    ///////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////
-    virtual BOOL GetMessage
-    (LPMSG lpMsg, HWND hWnd, UINT wMsgFilterMin, UINT wMsgFilterMax) {
-        if ((::GetMessage(lpMsg, hWnd, wMsgFilterMin, wMsgFilterMax))) {
-            return TRUE;
-        }
-        return FALSE;
-    }
-    virtual BOOL TranslateMessage(CONST MSG* lpMsg) {
-        if ((::TranslateMessage(lpMsg))) {
-            return TRUE;
-        }
-        return FALSE;
-    }
-    virtual LRESULT DispatchMessage(CONST MSG* lpMsg) {
-        LRESULT lResult = 0;
-        if ((lResult = ::DispatchMessage(lpMsg))) {
-            return lResult;
-        }
-        return 0;
-    }
-
-    ///////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////
-    virtual int operator ()
-    (HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR cmdLine, int cmdShow) {
-        int err = 0, err2 = 0;
-        if (!(err = before_WinMain(hInstance, hPrevInstance, cmdLine, cmdShow))) {
-            err = WinMain(hInstance, hPrevInstance, cmdLine, cmdShow);
-            if ((err2 = after_WinMain(hInstance, hPrevInstance, cmdLine, cmdShow))) {
-                if (!(err)) err = err2;
-            }
-        }
-        return err;
-    }
+	///////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////
+	virtual int operator()
+	(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR cmdLine, int cmdShow) {
+		int err = 0;
+		return err;
+	}
 
 public:
-    ///////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////
-    virtual ssize_t logfv(const char_t* format, va_list va) {
-        ssize_t count = 0;
-        return count;
-    }
-    virtual ssize_t log(const char_t* out, ssize_t length = -1) {
-        ssize_t count = 0;
-        return count;
-    }
-    virtual ssize_t logln() {
-        ssize_t count = 0;
-        return count;
-    }
-
-    ///////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////
-    virtual bool unlock() {
-        main_locker* locker;
-        if ((locker = this->attached_to())) {
-            return locker->unlock();
-        }
-        return true;
-    }
-    virtual bool lock() {
-        main_locker* locker;
-        if ((locker = this->attached_to())) {
-            return locker->lock();
-        }
-        return true;
-    }
-    virtual xos::mt::wait_status try_lock() {
-        main_locker* locker;
-        if ((locker = this->attached_to())) {
-            return locker->try_lock();
-        }
-        return xos::mt::wait_success;
-    }
-    virtual xos::mt::wait_status timed_lock(mseconds_t milliseconds) {
-        main_locker* locker;
-        if ((locker = this->attached_to())) {
-            return locker->timed_lock(milliseconds);
-        }
-        return xos::mt::wait_success;
-    }
-
+	///////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////
+	static int WinMain
+	(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR cmdLine, int cmdShow) {
+		int err = 1;
+		MainT* theMain = 0;
+		if ((theMain = TheMain())) {
+			err = (*theMain)(hInstance, hPrevInstance, cmdLine, cmdShow);
+		}
+		return err;
+	}
 protected:
-    ///////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////
-    static maint*& the_main();
+	static MainT*& TheMain() {
+		static MainT* theMain = 0;
+		return theMain;
+	}
 
-    ///////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////
-protected:
-    maint* the_main_;
+	///////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////
 };
-typedef maint<> main;
+typedef MainT<> Main;
 
 } // namespace windows 
 } // namespace fenetra 

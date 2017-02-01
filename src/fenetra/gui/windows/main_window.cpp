@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2017 $organization$
+/// Copyright (c) 1988-2016 $organization$
 ///
 /// This software is provided by the author and contributors ``as is'' 
 /// and any express or implied warranties, including, but not limited to, 
@@ -13,20 +13,22 @@
 /// or otherwise) arising in any way out of the use of this software, 
 /// even if advised of the possibility of such damage.
 ///
-///   File: WinMain.hpp
+///   File: main_window.cpp
 ///
 /// Author: $author$
-///   Date: 1/29/2017
+///   Date: 6/14/2016
 ///////////////////////////////////////////////////////////////////////
-#ifndef _FENETRA_WINDOWS_WINMAIN_HPP
-#define _FENETRA_WINDOWS_WINMAIN_HPP
-
-#include "fenetra/windows/Main.hpp"
+#include "fenetra/gui/windows/main_window.hpp"
 
 namespace fenetra {
+namespace gui {
 namespace windows {
 
-} // namespace windows 
+///////////////////////////////////////////////////////////////////////
+///  Class: main_windowt
+///////////////////////////////////////////////////////////////////////
+
+} // namespace windows
+} // namespace gui
 } // namespace fenetra 
 
-#endif // _FENETRA_WINDOWS_WINMAIN_HPP 

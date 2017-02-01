@@ -13,24 +13,48 @@
 /// or otherwise) arising in any way out of the use of this software, 
 /// even if advised of the possibility of such damage.
 ///
-///   File: Main.cpp
+///   File: main.hpp
 ///
 /// Author: $author$
 ///   Date: 1/30/2017
 ///////////////////////////////////////////////////////////////////////
-#include "fenetra/app/windows/hello/Main.hpp"
+#ifndef _FENETRA_APP_GUI_WINDOWS_HELLO_MAIN_HPP
+#define _FENETRA_APP_GUI_WINDOWS_HELLO_MAIN_HPP
+
+#include "fenetra/gui/windows/window_main.hpp"
 
 namespace fenetra {
 namespace app {
+namespace gui {
 namespace windows {
 namespace hello {
 
+typedef fenetra::gui::windows::window_main_implements main_implements;
+typedef fenetra::gui::windows::window_main main_extends;
 ///////////////////////////////////////////////////////////////////////
-///  Class: MainT
+/// Class: maint
 ///////////////////////////////////////////////////////////////////////
-static Main theMain;
+template
+<class TImplements = main_implements, class TExtends = main_extends>
+class _EXPORT_CLASS maint: virtual public TImplements, public TExtends {
+public:
+    typedef TImplements Implements;
+    typedef TExtends Extends;
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    maint() {
+    }
+    virtual ~maint() {
+    }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+};
+typedef maint<> main;
 
 } // namespace hello 
 } // namespace windows 
+} // namespace gui 
 } // namespace app 
 } // namespace fenetra 
+
+#endif // _FENETRA_APP_GUI_WINDOWS_HELLO_MAIN_HPP 

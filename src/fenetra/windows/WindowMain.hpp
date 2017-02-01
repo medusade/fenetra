@@ -13,20 +13,44 @@
 /// or otherwise) arising in any way out of the use of this software, 
 /// even if advised of the possibility of such damage.
 ///
-///   File: WinMain.hpp
+///   File: WindowMain.hpp
 ///
 /// Author: $author$
-///   Date: 1/29/2017
+///   Date: 1/31/2017
 ///////////////////////////////////////////////////////////////////////
-#ifndef _FENETRA_WINDOWS_WINMAIN_HPP
-#define _FENETRA_WINDOWS_WINMAIN_HPP
+#ifndef _FENETRA_WINDOWS_WINDOWMAIN_HPP
+#define _FENETRA_WINDOWS_WINDOWMAIN_HPP
 
 #include "fenetra/windows/Main.hpp"
 
 namespace fenetra {
 namespace windows {
 
+typedef windows::MainTImplements WindowMainTImplements;
+typedef windows::Main WindowMainTExtends;
+///////////////////////////////////////////////////////////////////////
+///  Class: WindowMainT
+///////////////////////////////////////////////////////////////////////
+template
+<class TImplements = WindowMainTImplements, class TExtends = WindowMainTExtends>
+class _EXPORT_CLASS WindowMainT: virtual public TImplements, public TExtends {
+public:
+    typedef TImplements Implements;
+    typedef TExtends Extends;
+
+	///////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////
+	WindowMainT() {
+    }
+    virtual ~WindowMainT() {
+    }
+
+	///////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////
+};
+typedef WindowMainT<> WindowMain;
+
 } // namespace windows 
 } // namespace fenetra 
 
-#endif // _FENETRA_WINDOWS_WINMAIN_HPP 
+#endif // _FENETRA_WINDOWS_WINDOWMAIN_HPP 

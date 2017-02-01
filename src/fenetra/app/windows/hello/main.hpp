@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2016 $organization$
+/// Copyright (c) 1988-2017 $organization$
 ///
 /// This software is provided by the author and contributors ``as is'' 
 /// and any express or implied warranties, including, but not limited to, 
@@ -13,46 +13,50 @@
 /// or otherwise) arising in any way out of the use of this software, 
 /// even if advised of the possibility of such damage.
 ///
-///   File: main.hpp
+///   File: Main.hpp
 ///
 /// Author: $author$
-///   Date: 6/12/2016
+///   Date: 1/30/2017
 ///////////////////////////////////////////////////////////////////////
 #ifndef _FENETRA_APP_WINDOWS_HELLO_MAIN_HPP
 #define _FENETRA_APP_WINDOWS_HELLO_MAIN_HPP
 
-#include "fenetra/windows/window_main.hpp"
+#include "fenetra/windows/WindowMain.hpp"
 
 namespace fenetra {
 namespace app {
 namespace windows {
 namespace hello {
 
-typedef fenetra::windows::window_main_implements main_implements;
-typedef fenetra::windows::window_main main_extends;
+typedef fenetra::windows::WindowMainTImplements MainTImplements;
+typedef fenetra::windows::WindowMain MainTExtends;
 ///////////////////////////////////////////////////////////////////////
-/// Class: maint
+///  Class: MainT
 ///////////////////////////////////////////////////////////////////////
 template
-<class TImplements = main_implements, class TExtends = main_extends>
-class _EXPORT_CLASS maint: virtual public TImplements, public TExtends {
+<class TImplements = MainTImplements, class TExtends = MainTExtends>
+class _EXPORT_CLASS MainT: virtual public TImplements,public TExtends {
 public:
     typedef TImplements Implements;
     typedef TExtends Extends;
-    ///////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////
-    maint() {
+	///////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////
+    MainT() {
     }
-    virtual ~maint() {
+    virtual ~MainT() {
     }
-    ///////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////
+
+	///////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////
 };
-typedef maint<> main;
+typedef MainT<> Main;
 
 } // namespace hello 
 } // namespace windows 
 } // namespace app 
 } // namespace fenetra 
 
+
 #endif // _FENETRA_APP_WINDOWS_HELLO_MAIN_HPP 
+        
+
